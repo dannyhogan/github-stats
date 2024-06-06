@@ -8,7 +8,7 @@ dotenv.config();
 const token = process.env.GITHUB_TOKEN;
 const org = 'torticity';
 const since = '2024-01-01';
-const until = '2024-01-31';
+const until = '2024-06-01';
 
 const headers = {
   'Authorization': `token ${token}`,
@@ -87,13 +87,12 @@ const fetchStats = async () => {
       stat.prComments,
       stat.commits,
       stat.prOpened,
-      stat.issuesCreated,
-      stat.issuesClosed,
       stat.prMerged,
     ]);
   });
 
   console.log(table.toString());
+  console.log(`The following statistics are from the dates: ${since} - ${until}`);
 };
 
 fetchStats().catch(async (error) => {
